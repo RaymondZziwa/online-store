@@ -100,7 +100,20 @@
         </div>
       </nav>
       <div>
+             <asp:DataList ID="DataList1" runat="server" RepeatColumns="3" Width="1846px">
+                <ItemTemplate>
+             <div class="col-md-3">
+            <div class="product-top">
+              <img src="<%#Eval("ProductImage") %>" id="prod" height="240" width="220"/>
+              <h3><%# Eval("ProductName") %></h3>
+              <h5>UGX:<%#Eval("price") %></h5>
+              <asp:Button ID="Delete" runat="server" Text="Delete" OnClick="delete"/>
+            </div>
+          </div>
 
+                </ItemTemplate>
+            </asp:DataList>
+<!--
           <asp:GridView ID="shopcart" runat="server" AutoGenerateColumns="False" Width="675px">
               <Columns>
                   <asp:BoundField DataField="ProductName" HeaderText="Product Name" />
@@ -108,7 +121,7 @@
                   <asp:BoundField DataField="price" HeaderText="Product Price" ReadOnly="True" SortExpression="price" />
                   <asp:TemplateField HeaderText="Total">
                       <ItemTemplate>
-                          <!--<asp:Label ID="Label1" runat="server" Text='</%# float.Parse(Eval("price")) %>'></asp:Label>-->
+                          <!--<asp:Label ID="Label1" runat="server" Text='</%# float.Parse(Eval("price")) %>'></asp:Label>
                       </ItemTemplate>
                   </asp:TemplateField>
                   <asp:CommandField HeaderText="Actions" ShowDeleteButton="True" ShowEditButton="True" />
@@ -117,10 +130,12 @@
 
           <br />
           Total:<asp:Label ID="totalprice" runat="server"></asp:Label>
-
+    -->
       </div>
-        
-      <!--  <asp:Button ID="buy" runat="server" Text="Buy" />-->
+        <div style="text-align:center">
+            <asp:Button ID="buy" runat="server" Text="Buy" class="btn btn-success" OnClick="buy_Click" />
+        </div>
+       
     </form>
           <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"

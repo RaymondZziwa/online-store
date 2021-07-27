@@ -12,7 +12,6 @@ namespace BABY_COLLECTION
 {
     public partial class Index : System.Web.UI.Page
     {
-        carts mycart;
         protected void Page_Load(object sender, EventArgs e)
         {
             lblname.Text = "Welcome to Baby Collection " + (string)Session["username"] + ".";
@@ -21,10 +20,10 @@ namespace BABY_COLLECTION
 
         protected void LogOut_Click(object sender, EventArgs e)
         {
-           /* con.Open();
-            SqlCommand comm = new SqlCommand("Insert into shopping_sessions(LogOut) values('" + DateTime.Now + "')", con);
+            con.Open();
+            SqlCommand comm = new SqlCommand("Delete from cartitems", con);
             comm.ExecuteNonQuery();
-            con.Close();*/
+            con.Close();
             Session.Clear();
             Response.Redirect("Log In.aspx");
         }
@@ -50,21 +49,38 @@ namespace BABY_COLLECTION
             }
             else
             {
-                if (mycart == null)
-                {
-                   carts mycart = new carts();
-                   Session["username"]= mycart;
-
-                }
+                
                 con.Open();
-                mycart = (carts) Session["username"];
-                SqlCommand comm = new SqlCommand("Select(ProductName,ProductImage,price) From Products", con);
-                SqlDataAdapter da = new SqlDataAdapter(comm);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                DataRow row = dt.Rows[1];
-                mycart.InsertProd(new CartItem (row["ProductName"].ToString(), row["ProductImage"].ToString(), float.Parse(row["price"].ToString())));
+                SqlCommand cmd = new SqlCommand("select ProductName,ProductImage,price from Products", con);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                     string prodname = reader.GetValue(0).ToString();
+                     string prodimg = reader.GetValue(1).ToString();
+                     string prodprice = reader.GetValue(2).ToString();
+                    reader.Close();
+         /*           SqlCommand comd = new SqlCommand("create table cartitems(ProductName text,ProductImage varchar(90),Price int)", con);
+                    comd.ExecuteNonQuery();*/
+                    SqlCommand ins = new SqlCommand("insert into cartitems(ProductName,ProductImage,Price) values('" + prodname + "','" + prodimg + "','" + prodprice + "')", con);
+                    ins.ExecuteNonQuery();
+                }
                 con.Close();
+
+                /* string prodId = Request.QueryString["ProductId"];
+                 mycart = (carts) Session["username"];
+                 DataTable dt = DataAccess.selectq("Select * from Products where ProductId =" + prodId);
+                 DataRow row = dt.Rows[0];
+                 mycart.InsertProd(new CartItem(Int32.Parse(prodId),row["ProductName"].ToString(),row["ProductImage"].ToString(),float.Parse(row["price"].ToString())));
+                 con.Open();
+                 mycart = (carts) Session["username"];
+                 SqlCommand comm = new SqlCommand("Select(ProductName,ProductImage,price) From Products", con);
+                 SqlDataAdapter da = new SqlDataAdapter(comm);
+                 DataTable dt = new DataTable();
+                 da.Fill(dt);
+                 DataRow row = dt.Rows[1];
+                 mycart.InsertProd(new CartItem (row["ProductName"].ToString(), row["ProductImage"].ToString(), float.Parse(row["price"].ToString())));
+                 con.Close();*/
             }
             /*
               float[] totalprice = new float[25000000];

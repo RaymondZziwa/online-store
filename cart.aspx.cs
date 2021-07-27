@@ -11,30 +11,49 @@ namespace BABY_COLLECTION
 {
     public partial class cart : System.Web.UI.Page
     {
-        carts mycart;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                mycart = (cart)Session["username"];
                  FillIn();
             }
             
 
         }
-
+        SqlConnection con = new SqlConnection("Data Source=ADMIN\\SQLEXPRESS;Initial Catalog=babycollection;Integrated Security=True");
         private void FillIn()
         {
-          shopcart.DataSource = carts.Items;
+          con.Open();
+          SqlCommand com = new SqlCommand("select * from cartitems",con);
+          SqlDataAdapter d = new SqlDataAdapter(com);
+          DataSet dt = new DataSet();
+          d.Fill(dt);
+          DataList1.DataSource = dt;
+          DataList1.DataBind();
+          con.Close();
+          /*  shopcart.DataSource = dt;
           shopcart.DataBind();
-          if(mycart.Items.Count == 0)
-            {
-                totalprice.Visible = false;
-            }
-            else
-            {
-               // totalprice.Text = cart.Total();
-            }
+            /* shopcart.DataSource = mycart.Items;
+             shopcart.DataBind();
+             if(mycart.Items.Count == 0)
+               {
+                   totalprice.Visible = false;
+               }
+               else
+               {
+                 // totalprice.Text = string.Format("Total: = {0,19:C}",cart.Totalp);
+               }*/
         }
+        protected void delete(object sender, EventArgs e)
+        {
+           
+        }
+        protected void buy_Click(object sender, EventArgs e)
+        {
+            con.Open();
+            SqlCommand cmd = new SqlCommand();
+        }
+
+        
     }
 }

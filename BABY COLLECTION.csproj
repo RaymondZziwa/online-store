@@ -207,7 +207,6 @@
     <Compile Include="cart.aspx.designer.cs">
       <DependentUpon>cart.aspx</DependentUpon>
     </Compile>
-    <Compile Include="cart.cs" />
     <Compile Include="CartItem.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
@@ -230,6 +229,7 @@
     <Compile Include="Control Panel.aspx.designer.cs">
       <DependentUpon>Control Panel.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DataAccess.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

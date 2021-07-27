@@ -228,11 +228,11 @@
       <div class="container">
         <h2>Products</h2>
         <div class="row">
-            <asp:DataList ID="DataList1" runat="server" RepeatColumns="3" Width="901px">
+            <asp:DataList ID="DataList1" runat="server" RepeatColumns="3" Width="1807px">
                 <ItemTemplate>
              <div class="col-md-3">
             <div class="product-top">
-              <img src="<%#Eval("ProductImage") %>" id="prod" height="240" width="220"/>
+              <img src="<%#Eval("ProductImage") %>" id="prod" height="240" width="220" style="margin-top:40px"/>
                 
             </div>
             <div class="product-bottom text-center">

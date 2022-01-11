@@ -72,3 +72,7 @@ C:\Users\Zziwa Raymond Ian\Desktop\ESHOP PROJECT\BABY COLLECTION\bin\Microsoft.C
 C:\Users\Zziwa Raymond Ian\Desktop\ESHOP PROJECT\BABY COLLECTION\obj\Debug\BABY COLLECTION.csproj.CopyComplete
 C:\Users\Zziwa Raymond Ian\Desktop\ESHOP PROJECT\BABY COLLECTION\obj\Debug\BABY COLLECTION.dll
 C:\Users\Zziwa Raymond Ian\Desktop\ESHOP PROJECT\BABY COLLECTION\obj\Debug\BABY COLLECTION.pdb
+C:\Users\HP\Desktop\online-store\obj\Debug\BABY COLLECTION.csproj.AssemblyReference.cache
+C:\Users\HP\Desktop\online-store\obj\Debug\BABY COLLECTION.csproj.CoreCompileInputs.cache
+C:\Users\HP\Desktop\online-store\obj\Debug\BABY COLLECTION.dll
+C:\Users\HP\Desktop\online-store\obj\Debug\BABY COLLECTION.pdb
